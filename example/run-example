@@ -1,0 +1,14 @@
+#!/bin/bash
+set -euo pipefail
+
+# First we build a map from the old version of the source file, and a list of
+# floating point numbers, one for each source line in the file.
+../bin/aline build-map \
+  old_source_file.rb data_for_old_source_file.json \
+  > old_source_file.alinemap
+
+# Now, we remap the map onto the new source file contents, showing each line in
+# the new source file as uncolored if it's new, or with a background color
+# derived from the floating point number provided to build-map:
+../bin/aline remap \
+  old_source_file.alinemap ../lib/aline.rb

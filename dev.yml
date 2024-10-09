@@ -1,0 +1,4 @@
+name: patience-diff
+up:
+  - ruby: 3.3.4
+  - bundler
